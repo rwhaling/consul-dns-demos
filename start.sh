@@ -45,3 +45,12 @@ docker run -d -P --dns $MACHINE_IP redis
 
 echo "scanning for services with dig"
 docker-compose up scanner
+
+echo "building dns scanner app"
+pushd containers/scanner
+spring jar scanner.jar *.groovy
+docker build .
+popd
+echo "starting dns scanner app"
+docker-compose up -d scanner-app
+echo "done"

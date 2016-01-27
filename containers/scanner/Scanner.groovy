@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse
 @RestController
 @ConfigurationProperties
 class Scanner {
-  String worldName
+  String greeting
   String dnsBase
   DnsSrvResolver resolver = DnsSrvResolvers.newBuilder()
   	       		              .dnsLookupTimeoutMillis(1000)
@@ -16,7 +16,7 @@ class Scanner {
 
   @RequestMapping("/")
   String home() {
-    return "Hello $worldName!"
+    return "$greeting!"
   }
 
   @RequestMapping(value = "/{service}", produces = "text/plain; charset=utf-8")

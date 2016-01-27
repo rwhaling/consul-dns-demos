@@ -40,3 +40,10 @@ scanner:
   build: "./containers/dnsutils"
   dns:
     - $MACHINE_IP
+
+scanner-app:
+  build: "./containers/scanner"
+  ports:
+    - "8080:8080"
+  dns:
+    - $MACHINE_IP
